@@ -1,0 +1,53 @@
+.body {
+    background-color: #fcc;
+}
+
+.container {
+    max-width: 1600px;
+}
+
+
+
+.site-title {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    // line-height: 33px;
+    line-height: 2em; // 48
+
+    color: #343434;
+}
+
+.preview-outer {
+    padding-left: 0.5* 1/12 * 100%;
+    padding-right: 0.5* 1/12 * 100%;
+}
+
+.preview {
+    $border_color: #989898;
+
+
+
+    // border: 5px dashed #343434;
+    // border: 5px dashed #989898;
+    // border: 2px dashed #343434;
+    // ..+ //
+    // border generator
+    // https://kovart.github.io/dashed-border-generator/
+    // 
+    // background-repeat: no-repeat;
+    // background: #fff center center no-repeat;
+    // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='4' stroke-dasharray='4%2c 16' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+
+    // еще несколько готовых на SCSS
+    // https://codepen.io/amit_sheen/pen/xxZeyjO
+    background-image: repeating-linear-gradient(-30deg, $border_color, $border_color 15px, transparent 15px, transparent 30px, $border_color 30px), repeating-linear-gradient(60deg, $border_color, $border_color 15px, transparent 15px, transparent 30px, $border_color 30px), repeating-linear-gradient(150deg, $border_color, $border_color 15px, transparent 15px, transparent 30px, $border_color 30px), repeating-linear-gradient(240deg, $border_color, $border_color 15px, transparent 15px, transparent 30px, $border_color 30px);
+    background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+
+
+    &-inner {}
+
+}
