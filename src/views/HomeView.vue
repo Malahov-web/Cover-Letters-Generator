@@ -42,67 +42,7 @@ http://malahov-web.com/portfolio/
         <div class="generator">
           <v-row>
             <v-col lg="3">
-              <div class="generator__part part">
-                <div class="part__title">Part 1 Должность</div>
-                <div class="part__preview">
-                  <div class="part__preview-inner">
-                    <v-text-field label="label" name="name" textarea>
-                      v-text-field
-                    </v-text-field>
-
-                    <!-- <v-text-field label="label" name="name" textarea
-                  >http://localhost:8080/</v-text-field
-                > -->
-                    <v-textarea
-                      filled
-                      name="input-7-4"
-                      label="Filled textarea"
-                      value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-                    ></v-textarea>
-                  </div>
-                </div>
-                <div class="part__controls">
-                  <div class="part__controls-item control">
-                    <div class="control__title">Должность:</div>
-                    <div class="control__field">
-                      <v-radio-group v-model="value">
-                        <v-radio label="label" value="value">Frontend</v-radio>
-
-                        <v-radio label="label" value="CSS">HTML</v-radio>
-                      </v-radio-group>
-                    </div>
-                  </div>
-
-                  <div class="part__controls-item control">
-                    <div class="control__title">Формат работы::</div>
-                    <div class="control__field">
-                      <v-item-group>
-                        <v-checkbox
-                          label="label"
-                          v-model="value"
-                          value="value"
-                          hide-details="auto"
-                          >удаленно</v-checkbox
-                        >
-                        <v-checkbox
-                          label="label"
-                          v-model="value"
-                          value="value"
-                          hide-details="auto"
-                          >гибридно или как-то еще проверяем длинну</v-checkbox
-                        >
-                        <v-checkbox
-                          label="label"
-                          v-model="value"
-                          value="value"
-                          hide-details="auto"
-                          >офис</v-checkbox
-                        >
-                      </v-item-group>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Introduction class="asd"> </Introduction>
             </v-col>
             <v-col lg="3">Part</v-col>
             <v-col lg="3">Part</v-col>
@@ -112,13 +52,19 @@ http://malahov-web.com/portfolio/
       </v-col>
     </div>
 
-    <div class="generator"></div>
+    <!-- <div class="generator"></div> -->
   </div>
 </template>
 
 <script>
+import Introduction from "@/components/Introduction.vue";
+
 export default {
   name: "HomeView",
+
+  components: {
+    Introduction,
+  },
 };
 </script>
 
