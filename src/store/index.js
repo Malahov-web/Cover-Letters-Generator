@@ -4,8 +4,61 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+    state: {
+        settings: {
+            // ranks: [
+            //     {
+            //         name: "frontend",
+            //         title: "Frontend-разработчик",
+            //     },
+            //     {
+            //         name: "html",
+            //         title: "HTML-верстальщик",
+            //     },
+            // ],
+            ranks: {
+                frontend: {
+                    name: "frontend",
+                    title: "Frontend-разработчик",
+                },
+                html: {
+                    name: "html",
+                    title: "HTML-верстальщик",
+                },
+            },
+
+            // formats: [
+            //     {
+            //         name: "remote",
+            //         title: "удаленно",
+            //     },
+            //     {
+            //         name: "hybrid",
+            //         title: "гибридно",
+            //     },
+            //     {
+            //         name: "office",
+            //         title: "офис",
+            //     },
+            // ],
+
+            formats: {
+                remote: {
+                    name: "remote",
+                    title: "удаленно",
+                },
+                hybrid: {
+                    name: "hybrid",
+                    title: "гибридно",
+                },
+                office: {
+                    name: "office",
+                    title: "офис",
+                },
+            },
+        },
+    },
+    mutations: {},
+    actions: {},
+    modules: {},
 });

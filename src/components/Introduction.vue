@@ -28,24 +28,14 @@
       <div class="part__controls-item control">
         <div class="control__title">Должность:</div>
         <div class="control__field">
-          <v-radio-group v-model="value">
-            <!-- <v-radio label="Frontend-разработчик" value="frontend"
-              >Frontend-разработчик</v-radio
-            >
-
-            <v-radio label="HTML-верстальщик" value="html"
-              >HTML-верстальщик</v-radio
-            > -->
-          </v-radio-group>
-
           <v-radio-group v-model="rankActive">
             <v-radio
-              :label="rank"
-              :value="rank"
-              __value="rank"
+              :label="rank.title"
+              :value="rank.name"
               v-for="rank in ranks"
               :key="rank"
-            ></v-radio>
+            >
+            </v-radio>
           </v-radio-group>
         </div>
       </div>
@@ -60,34 +50,25 @@
               value="value"
               hide-details="auto"
               >удаленно</v-checkbox
-            >
-            <v-checkbox
-              label="label"
-              v-model="value"
-              value="value"
-              hide-details="auto"
-              >гибридно или как-то еще проверяем длинну</v-checkbox
-            >
-            <v-checkbox
-              label="label"
-              v-model="value"
-              value="value"
-              hide-details="auto"
-              >офис</v-checkbox
-            >
-          </v-item-group> -->
+            > -->
 
-          <!-- <v-item-group> -->
-          <v-checkbox
+          <!-- <v-checkbox
             :label="format.title"
             :value="format.title"
             hide-details="auto"
             v-model="formatActive"
             v-for="format in formats"
             :key="format.name"
-          ></v-checkbox>
+          ></v-checkbox> -->
 
-          <!-- </v-item-group> -->
+          <v-checkbox
+            hide-details="auto"
+            :label="format.title"
+            :value="format.name"
+            v-model="formatActive"
+            v-for="(format, key) in formats"
+            :key="key"
+          ></v-checkbox>
         </div>
       </div>
     </div>
@@ -100,84 +81,47 @@ export default {
 
   data() {
     return {
-      templateText:
-        "Здравствуйте. Интересует работа в вашей компании (удаленно), на позиции Frontend-разработчика.",
-
-      TEMPranks: [
-        {
-          name: "frontend",
-          title: "Frontend-разработчик",
-        },
-        {
-          name: "html",
-          title: "HTML-верстальщик",
-        },
-      ],
-
-      ranks: ["Frontend-разработчик", "HTML-верстальщик"],
-
-      // rankActive: this.ranks[0], // -
-      //   rankActive: this.this.ranks[0], // -
-      //   rankActive: this["ranks"][0], //-
-      //   rankActive: "ranks"[0], //-
-      //   rankActive: "ranks[0]" // -,
-      // rankActive: "", // +
-      rankActive: "Frontend-разработчик",
-
-      formats: [
-        {
-          name: "remote",
-          title: "удаленно",
-        },
-        {
-          name: "hybrid",
-          title: "гибридно",
-        },
-        {
-          name: "office",
-          title: "офис",
-        },
-      ],
-
+      rankActive: "frontend",
       formatActive: [],
     };
   },
 
   computed: {
-    template() {
-      //   return `Здравствуйте. Интересует работа в вашей компании ( ${this.formatActive} ), на должности ${this.rankActive}.`;
-      //
-      return `Здравствуйте. <br> Интересует работа в вашей компании (  ${this.renderFormatTemplate(
-        this.formatActive
-      )} ), на должности ${this.rankActive}.`;
-      //  this.data
+    ranks() {
+      // return this.data
+      // return this.$store.state.history.calendarMode; //
+      return this.$store.state.settings.ranks; //
+    },
 
-      //   return "Здравствуйте. \n Интересует работа в вашей компании ";
-      //   return "Здравствуйте. <br> Интересует работа в вашей компании ";
+    rankTemplate() {
+      return this.ranks[this.rankActive].title;
+    },
+
+    formats() {
+      return this.$store.state.settings.formats; //
+    },
+
+    formatTemplate() {
+      //   return "";
+      return this.renderFormatTemplate(this.formatActive);
+      //   return this.formats[this.formatActive].title;
+    },
+
+    template() {
+      return `Здравствуйте. <br> Интересует работа в вашей компании ( ${this.formatTemplate} ), 
+      на должности ${this.rankTemplate}.`;
     },
   },
 
   methods: {
     renderFormatTemplate(formatArr) {
-      // let template = formatArr.reduce((previousValue, currentValue) => {
-      //     return currentValue
-      // });
-
-      let template = formatArr.reduce(
-        // (accumulator, currentValue, index, array) => {
-        (accumulator, currentValue, index) => {
-          // (accumulator, currentValue, array) => {
-          // (accumulator, currentValue) => {
-          //   return accumulator + currentValue;
-          //   return `${accumulator} ${currentValue},`;
-          //   return `${accumulator} ${currentValue},`;
-          return index == 0
-            ? `${accumulator} ${currentValue}`
-            : `${accumulator}, ${currentValue}`;
-        },
-        ""
-        // array[0] // -
-      );
+      let template = formatArr.reduce((accumulator, currentValue, index) => {
+        // let text = currentValue.title; // -
+        let text = this.formats[currentValue].title;
+        return index == 0
+          ? `${accumulator} ${text}`
+          : `${accumulator}, ${text}`;
+      }, "");
 
       return template;
     },
