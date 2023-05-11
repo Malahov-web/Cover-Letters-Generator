@@ -56,6 +56,29 @@ export default new Vuex.Store({
                     title: "офис",
                 },
             },
+
+            areas: {
+                html: {
+                    name: "html",
+                    title: "Верстка",
+                    product_types: [
+                        "сайты",
+                        "лендинги",
+                        "магазины",
+                        "интерфейсы",
+                        "emails",
+                        "banners",
+                        "spa",
+                    ],
+                },
+                javascript: {
+                    name: "javascript",
+                    title: "Javascript",
+                    __product_types: ["spa", "интерфейсы"],
+                    product_types: ["ES6+", "jQuery", "Vue.js"],
+                    __skills: ["Может быть нужны еще skills?", "ES6+", "Vue.js"],
+                },
+            },
         },
     },
     mutations: {},
