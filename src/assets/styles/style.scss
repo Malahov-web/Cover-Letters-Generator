@@ -51,3 +51,14 @@
     &-inner {}
 
 }
+
+.skills {
+
+    &__list {}
+
+    &__search {
+        display: flex;
+        align-items: center;
+    }
+
+}

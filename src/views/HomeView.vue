@@ -47,7 +47,9 @@ http://malahov-web.com/portfolio/
             <v-col lg="3">
               <Experience class="asd"> </Experience>
             </v-col>
-            <v-col lg="3">Part</v-col>
+            <v-col lg="3">
+              <Additional class="asd"> </Additional>
+            </v-col>
             <v-col lg="3">Part</v-col>
           </v-row>
         </div>
@@ -61,6 +63,7 @@ http://malahov-web.com/portfolio/
 <script>
 import Introduction from "@/components/Introduction.vue";
 import Experience from "@/components/Experience.vue";
+import Additional from "@/components/Additional.vue";
 
 export default {
   name: "HomeView",
@@ -68,6 +71,7 @@ export default {
   components: {
     Introduction,
     Experience,
+    Additional,
   },
 };
 </script>
