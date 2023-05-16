@@ -52,13 +52,32 @@
 
 }
 
+.control {
+    &__title {}
+
+    &__item {
+        margin-bottom: 28px;
+    }
+
+    &__content {
+        margin-top: 16px; //20px;
+        padding-left: 30px;
+
+    }
+
+}
+
 .skills {
 
-    &__list {}
+    &__list {
+        margin-left: -8px;
+    }
 
     &__search {
         display: flex;
         align-items: center;
+        // padding-left: 30px;
+        margin-top: 8px; //12px;
     }
 
 }
