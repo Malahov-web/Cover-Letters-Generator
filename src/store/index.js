@@ -113,6 +113,37 @@ export default new Vuex.Store({
                     "asd",
                 ],
             },
+
+            wishes: {
+                company: {
+                    name: "company",
+                    title: "Хочу работать в прогрессивной компании без бюрократии.",
+                },
+                team: {
+                    name: "team",
+                    title: "Ищу команду в которой можно вырасти.",
+                },
+
+                values: {
+                    name: "values",
+                    title: "Разделяю такие ценности как свобода, результат, качество.",
+                },
+                interaction: {
+                    name: "interaction",
+                    title:
+                        "Желаю Общаться с интересными людьми (учиться у них и делится своим)",
+                },
+
+                test: {
+                    name: "test",
+                    title: "Готов выполнить тестовое задание.",
+                },
+                potrfolio: {
+                    name: "potrfolio",
+                    title:
+                        "Мое портфолио <br> <a href='http://malahov-web.com/portfolio/'>malahov-web.com/portfolio/</a>",
+                },
+            },
         },
     },
     mutations: {},

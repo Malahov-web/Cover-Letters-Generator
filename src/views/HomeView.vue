@@ -50,7 +50,9 @@ http://malahov-web.com/portfolio/
             <v-col lg="3">
               <Additional class="asd"> </Additional>
             </v-col>
-            <v-col lg="3">Part</v-col>
+            <v-col lg="3">
+              <Wishes class="asd"> </Wishes>
+            </v-col>
           </v-row>
         </div>
       </v-col>
@@ -64,6 +66,7 @@ http://malahov-web.com/portfolio/
 import Introduction from "@/components/Introduction.vue";
 import Experience from "@/components/Experience.vue";
 import Additional from "@/components/Additional.vue";
+import Wishes from "@/components/Wishes.vue";
 
 export default {
   name: "HomeView",
@@ -72,6 +75,7 @@ export default {
     Introduction,
     Experience,
     Additional,
+    Wishes,
   },
 };
 </script>
