@@ -4,24 +4,27 @@
     <div class="part__preview">
       <div class="part__preview-inner">
         <!-- <v-text-field label="label" name="name" textarea>
-          v-text-field
+          {{ template }}
         </v-text-field> -->
 
         <!-- <v-textarea
           filled
           name="input-7-4"
+          height="160"
           label="Filled textarea"
           __value="template"
           __:value="template"
-          v-model="templateText"
+          v-model="template"
         ></v-textarea> -->
-        <!-- <p>
-          {{ templateText }}
-        </p> -->
-        <!-- <p>
-          {{ template }}
-        </p> -->
-        <p v-html="template"></p>
+
+        <v-textarea
+          filled
+          name="input-7-4"
+          height="160"
+          label="Filled textarea"
+          v-model="templateByManualy"
+        ></v-textarea>
+        <!-- <p v-html="template"></p> -->
       </div>
     </div>
     <div class="part__controls">
@@ -83,13 +86,13 @@ export default {
     return {
       rankActive: "frontend",
       formatActive: [],
+      //   templateByManualy: "",
+      templateByManualy: this.template,
     };
   },
 
   computed: {
     ranks() {
-      // return this.data
-      // return this.$store.state.history.calendarMode; //
       return this.$store.state.settings.ranks; //
     },
 
@@ -108,8 +111,29 @@ export default {
     },
 
     template() {
-      return `Здравствуйте. <br> Интересует работа в вашей компании ( ${this.formatTemplate} ), 
-      на должности ${this.rankTemplate}.`;
+      return `Здравствуйте. \nИнтересует работа в вашей компании ( ${this.formatTemplate} ), \nна должности ${this.rankTemplate}.`;
+    },
+  },
+
+  mounted() {
+    this.templateByManualy = this.template;
+  },
+
+  watch: {
+    template(newValue) {
+      this.templateByManualy = newValue;
+      //   this.stor
+      //   this.$store.dispatch("updateTemplate", {
+      //     key: "introduction",
+      //     value: newValue,
+      //   });
+    },
+
+    templateByManualy(newValue) {
+      this.$store.dispatch("updateTemplate", {
+        key: "introduction",
+        value: newValue,
+      });
     },
   },
 

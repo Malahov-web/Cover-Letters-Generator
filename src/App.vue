@@ -20,11 +20,6 @@
       </v-container>
 
       <v-container grid-list-xs>
-        <v-col lg="12">
-          <!-- <ViewControls class="asd"></ViewControls> -->
-        </v-col>
-        <!-- <Day class="asd"></Day> -->
-        <!-- <HelloWorld class="asd"></HelloWorld> -->
         <HomeView class="asd"></HomeView>
         <!-- <hello-world /> -->
       </v-container>

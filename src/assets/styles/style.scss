@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
+
+
 .body {
     background-color: #fcc;
 }
@@ -80,4 +83,15 @@
         margin-top: 8px; //12px;
     }
 
+}
+
+
+
+/* Material Dsign */
+
+.theme--light.v-input textarea {
+    font-family: 'Noto Sans';
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
 }

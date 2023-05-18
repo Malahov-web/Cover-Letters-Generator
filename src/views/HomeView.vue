@@ -12,28 +12,7 @@
 
     <v-row __no-gutters>
       <v-col lg="8" offset-lg="2" class="preview-outer">
-        <div class="preview px-16 py-8">
-          <div class="preview-inner">
-            <div class="preview__content">
-              <!-- TODO: -->
-              <!-- Вероятно тэг per будет не нужен -->
-
-              <pre>
-Здравствуйте.
-Интересует работа в вашей компании (удаленно),
-на позиции Frontend-разработчика.
-
-Имею большой опыт в верстке html/css, (сайты, лендинги, интерфейсы, emails, spa), 
-из плюсов имею опыт работы с  Vue.js, GSAP, и практику оптимизации сайтов. 
-
-Ищу работу в удаленном формате и  команду в которой можно вырасти.
-Мое портфолио:
-http://malahov-web.com/portfolio/
-                </pre
-              >
-            </div>
-          </div>
-        </div>
+        <Preview class="asd"></Preview>
       </v-col>
     </v-row>
 
@@ -67,6 +46,7 @@ import Introduction from "@/components/Introduction.vue";
 import Experience from "@/components/Experience.vue";
 import Additional from "@/components/Additional.vue";
 import Wishes from "@/components/Wishes.vue";
+import Preview from "@/components/Preview.vue";
 
 export default {
   name: "HomeView",
@@ -76,6 +56,7 @@ export default {
     Experience,
     Additional,
     Wishes,
+    Preview,
   },
 };
 </script>

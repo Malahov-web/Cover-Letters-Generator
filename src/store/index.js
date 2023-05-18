@@ -145,8 +145,30 @@ export default new Vuex.Store({
                 },
             },
         },
+
+        template: {
+            introduction: "",
+            experience: "",
+            additional: "",
+            wishes: "",
+        },
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+        UPDATE_TEMPLATE(state, payload) {
+            let { key, value } = payload;
+            state.template[key] = value;
+        },
+    },
+
+    actions: {
+        updateTemplate({ commit }, payload) {
+            // save the items currently in the cart
+            // const savedCartItems = [...state.cart.added];
+            // Destructurisation
+            // let { key, value } = payload;
+            // state.
+            commit("UPDATE_TEMPLATE", payload);
+        },
+    },
     modules: {},
 });
