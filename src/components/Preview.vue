@@ -5,7 +5,28 @@
         <!-- TODO: -->
         <!-- Вероятно тэг per будет не нужен -->
 
+        <!-- <v-text-field
+            label="label"
+            name="name"
+            textarea
+        ></v-text-field> -->
+
+        <!-- <v-textarea
+          name="input-7-1"
+          label="Default style"
+          :value="template"
+          hint="Hint text"
+        ></v-textarea> -->
+
+        <!-- <div>
+          {{ template }}
+        </div> -->
+
+        <!-- <div v-html="template"></div> -->
+
         <pre>{{ template }}</pre>
+
+        <!-- <code> {{ template }}</code> -->
 
         <!-- <pre>
 Здравствуйте.
@@ -46,10 +67,10 @@ export default {
         }
         const templatePart = templateObj[key];
 
-        template += templatePart;
+        template += "\n\n" + templatePart;
       }
 
-      return template;
+      return template.trim();
     },
   },
 };

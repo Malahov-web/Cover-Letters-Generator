@@ -156,6 +156,7 @@ export default new Vuex.Store({
     mutations: {
         UPDATE_TEMPLATE(state, payload) {
             let { key, value } = payload;
+            key = key.toLowerCase();
             state.template[key] = value;
         },
     },

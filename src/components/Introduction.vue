@@ -1,32 +1,13 @@
 <template>
   <div class="generator__part part">
     <div class="part__title">Part 1 Должность</div>
-    <div class="part__preview">
-      <div class="part__preview-inner">
-        <!-- <v-text-field label="label" name="name" textarea>
-          {{ template }}
-        </v-text-field> -->
 
-        <!-- <v-textarea
-          filled
-          name="input-7-4"
-          height="160"
-          label="Filled textarea"
-          __value="template"
-          __:value="template"
-          v-model="template"
-        ></v-textarea> -->
+    <PartPreview
+      class="asd"
+      :template="template"
+      :part="this.$options._componentTag"
+    ></PartPreview>
 
-        <v-textarea
-          filled
-          name="input-7-4"
-          height="160"
-          label="Filled textarea"
-          v-model="templateByManualy"
-        ></v-textarea>
-        <!-- <p v-html="template"></p> -->
-      </div>
-    </div>
     <div class="part__controls">
       <div class="part__controls-item control">
         <div class="control__title">Должность:</div>
@@ -79,15 +60,20 @@
 </template>
 
 <script>
+import PartPreview from "@/components/PartPreview.vue";
+
 export default {
   name: "Introduction",
+  components: {
+    PartPreview,
+  },
 
   data() {
     return {
       rankActive: "frontend",
       formatActive: [],
       //   templateByManualy: "",
-      templateByManualy: this.template,
+      //   templateByManualy: this.template,
     };
   },
 
@@ -117,24 +103,30 @@ export default {
 
   mounted() {
     this.templateByManualy = this.template;
+
+    console.log("this:");
+    console.log(this); // +
+    // console.log(this.options.name); // -
+    // console.log(this.$options._componentTag); // +
   },
 
   watch: {
     template(newValue) {
-      this.templateByManualy = newValue;
+      //   this.templateByManualy = newValue;
       //   this.stor
-      //   this.$store.dispatch("updateTemplate", {
-      //     key: "introduction",
-      //     value: newValue,
-      //   });
-    },
-
-    templateByManualy(newValue) {
       this.$store.dispatch("updateTemplate", {
-        key: "introduction",
+        // key: "introduction",
+        key: this.$options._componentTag,
         value: newValue,
       });
     },
+
+    // templateByManualy(newValue) {
+    //   this.$store.dispatch("updateTemplate", {
+    //     key: "introduction",
+    //     value: newValue,
+    //   });
+    // },
   },
 
   methods: {

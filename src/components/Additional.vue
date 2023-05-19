@@ -1,29 +1,13 @@
 <template>
   <div class="generator__part part">
-    <div class="part__title">Part 1 Плюсы</div>
-    <div class="part__preview">
-      <div class="part__preview-inner">
-        <!-- <v-text-field label="label" name="name" textarea>
-          v-text-field
-        </v-text-field> -->
+    <div class="part__title">Part 3 Плюсы</div>
+    <PartPreview
+      class="asd"
+      :template="template"
+      :part="this.$options._componentTag"
+    >
+    </PartPreview>
 
-        <!-- <v-textarea
-          filled
-          name="input-7-4"
-          label="Filled textarea"
-          __value="template"
-          __:value="template"
-          v-model="templateText"
-        ></v-textarea> -->
-        <!-- <p>
-          {{ templateText }}
-        </p> -->
-        <!-- <p>
-          {{ template }}
-        </p> -->
-        <p v-html="template"></p>
-      </div>
-    </div>
     <div class="part__controls">
       <div class="part__controls-item control">
         <div class="control__title">Плюсы:</div>
@@ -57,12 +41,14 @@
 </template>
 
 <script>
+import PartPreview from "@/components/PartPreview.vue";
 import Skills from "@/components/Skills.vue";
 
 export default {
   name: "Additional",
 
   components: {
+    PartPreview,
     Skills,
   },
 
@@ -113,9 +99,9 @@ export default {
     },
 
     renderExperienceTemplate() {
-      let experienceTemplate = `Из плюсов имею опыт работы с 
-         ${this.skillsActive.experience.join(", ")}.
-      `;
+      let experienceTemplate = `Из плюсов имею опыт работы с ${this.skillsActive.experience.join(
+        ", "
+      )}.`;
 
       // ${this.productTypesActive.html.join(", ")}
 
@@ -123,10 +109,9 @@ export default {
     },
 
     renderKnowledgeTemplate() {
-      let knowledgeTemplate = `Знание и понимание 
-       ${this.skillsActive.knowledge.join(", ")}.         
-
-      `;
+      let knowledgeTemplate = `\nЗнание и понимание ${this.skillsActive.knowledge.join(
+        ", "
+      )}.`;
 
       // ${this.productTypesActive.html.join(", ")}
 

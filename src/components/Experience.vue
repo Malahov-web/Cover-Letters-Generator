@@ -1,43 +1,17 @@
 <template>
   <div class="generator__part part">
-    <div class="part__title">Part 1 Должность</div>
-    <div class="part__preview">
-      <div class="part__preview-inner">
-        <!-- <v-text-field label="label" name="name" textarea>
-          v-text-field
-        </v-text-field> -->
+    <div class="part__title">Part 2 Опыт</div>
 
-        <!-- <v-textarea
-          filled
-          name="input-7-4"
-          label="Filled textarea"
-          __value="template"
-          __:value="template"
-          v-model="templateText"
-        ></v-textarea> -->
-        <!-- <p>
-          {{ templateText }}
-        </p> -->
-        <!-- <p>
-          {{ template }}
-        </p> -->
-        <p v-html="template"></p>
-      </div>
-    </div>
+    <PartPreview
+      class="asd"
+      :template="template"
+      :part="this.$options._componentTag"
+    ></PartPreview>
+
     <div class="part__controls">
       <div class="part__controls-item control">
         <div class="control__title">Опыт в направлениях:</div>
         <div class="control__field">
-          <!-- <v-radio-group v-model="rankActive">
-            <v-radio
-              :label="rank.title"
-              :value="rank.name"
-              v-for="rank in ranks"
-              :key="rank"
-            >
-            </v-radio>
-          </v-radio-group> -->
-
           <v-checkbox
             hide-details="auto"
             :label="area.title"
@@ -52,24 +26,6 @@
       <div class="part__controls-item control">
         <div class="control__title">Типы в Направлениях:</div>
         <div class="control__field">
-          <!-- <v-item-group>
-            <v-checkbox
-              label="label"
-              v-model="value"
-              value="value"
-              hide-details="auto"
-              >удаленно</v-checkbox
-            > -->
-
-          <!-- <v-checkbox
-            :label="format.title"
-            :value="format.title"
-            hide-details="auto"
-            v-model="formatActive"
-            v-for="format in formats"
-            :key="format.name"
-          ></v-checkbox> -->
-
           <!-- <v-checkbox
             hide-details="auto"
             :label="format.title"
@@ -101,12 +57,6 @@
             <v-tab-item v-for="area in areasActive" :key="areas[area].name">
               {{ areas[area].title }}
 
-              <!-- <ul>
-                <li v-for="item in areas[area].product_types" :key="item">
-                  {{ item }}
-                </li>
-              </ul> -->
-
               <v-checkbox
                 hide-details="auto"
                 :label="item"
@@ -124,8 +74,14 @@
 </template>
 
 <script>
+import PartPreview from "@/components/PartPreview.vue";
+
 export default {
   name: "Experience",
+
+  components: {
+    PartPreview,
+  },
 
   data() {
     return {
@@ -139,6 +95,8 @@ export default {
         html: [],
         javascript: [],
       },
+
+      templateByManualy: this.template,
     };
   },
 
@@ -148,8 +106,6 @@ export default {
     },
 
     areasTemplate() {
-      //   return this.ranks[this.rankActive].title;
-      //   return this.renderAreasTemplate(this.areasActive);
       return this.renderAreasTemplate();
     },
 
@@ -171,9 +127,24 @@ export default {
       if (this.areasActive.includes("javascript")) {
         template += this.renderAreasJavascriptTemplate();
       }
-      // ...
 
       return template;
+    },
+  },
+
+  mounted() {
+    this.templateByManualy = this.template;
+  },
+
+  watch: {
+    template(newValue) {
+      //   this.templateByManualy = newValue;
+      //   this.stor
+      this.$store.dispatch("updateTemplate", {
+        // key: "introduction",
+        key: this.$options._componentTag,
+        value: newValue,
+      });
     },
   },
 
@@ -191,18 +162,22 @@ export default {
 
     renderAreasTemplate() {
       //   let htmlTemplate = `Имею большой опыт в верстке html/css, (сайты, лендинги, интерфейсы, emails, spa),`;
-      let htmlTemplate = `Имею большой опыт в верстке html/css, (
-         ${this.productTypesActive.html.join(", ")}
-
-      ),`;
+      let htmlTemplate = `Имею большой опыт в верстке html/css, ( ${this.productTypesActive.html.join(
+        ", "
+      )}),`;
 
       return htmlTemplate;
     },
 
     renderAreasJavascriptTemplate() {
-      let javascriptTemplate = ` <br>а также знания и навыки в Javascript-разработке (
-         ${this.productTypesActive.javascript.join(", ")}
-      )`;
+      //   let javascriptTemplate = ` <br>а также знания и навыки в Javascript-разработке (
+      //      ${this.productTypesActive.javascript.join(", ")}
+      //   )`;
+
+      let javascriptTemplate = ` а также знания и навыки в Javascript-разработке (${this.productTypesActive.javascript.join(
+        ", "
+      )})`;
+
       return javascriptTemplate;
     },
   },

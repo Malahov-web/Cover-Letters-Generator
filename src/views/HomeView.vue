@@ -16,7 +16,7 @@
       </v-col>
     </v-row>
 
-    <div class="v-row">
+    <div class="v-row mt-4">
       <v-col lg="12">
         <div class="generator">
           <v-row>

@@ -1,29 +1,13 @@
 <template>
   <div class="generator__part part">
     <div class="part__title">Part 4 Пожелания</div>
-    <div class="part__preview">
-      <div class="part__preview-inner">
-        <!-- <v-text-field label="label" name="name" textarea>
-          v-text-field
-        </v-text-field> -->
 
-        <!-- <v-textarea
-          filled
-          name="input-7-4"
-          label="Filled textarea"
-          __value="template"
-          __:value="template"
-          v-model="templateText"
-        ></v-textarea> -->
-        <!-- <p>
-          {{ templateText }}
-        </p> -->
-        <!-- <p>
-          {{ template }}
-        </p> -->
-        <p v-html="template"></p>
-      </div>
-    </div>
+    <PartPreview
+      class="asd"
+      :template="template"
+      :part="this.$options._componentTag"
+    ></PartPreview>
+
     <div class="part__controls">
       <div class="part__controls-item control">
         <div class="control__title">Пожелания:</div>
@@ -43,12 +27,20 @@
 </template>
 
 <script>
+import PartPreview from "@/components/PartPreview.vue";
+
 export default {
   name: "Wishes", //  wishes
+
+  components: {
+    PartPreview,
+  },
 
   data() {
     return {
       wishesActive: [],
+
+      templateByManualy: this.template,
     };
   },
 
@@ -62,8 +54,22 @@ export default {
     },
 
     template() {
-      return ` ${this.wishesTemplate}  
-      `;
+      return `${this.wishesTemplate}`;
+    },
+  },
+
+  mounted() {
+    this.templateByManualy = this.template;
+  },
+
+  watch: {
+    template(newValue) {
+      //   this.templateByManualy = newValue;
+      //   this.stor
+      this.$store.dispatch("updateTemplate", {
+        key: this.$options._componentTag,
+        value: newValue,
+      });
     },
   },
 
@@ -73,8 +79,9 @@ export default {
         // let text = currentValue.title; // -
         let text = this.wishes[currentValue].title;
         return index == 0
-          ? `${accumulator} ${text}`
-          : `${accumulator} <br> ${text}`;
+          ? `${accumulator}${text}`
+          : //   : `${accumulator} <br> ${text}`;
+            `${accumulator}\n${text}`;
       }, "");
 
       return template;
